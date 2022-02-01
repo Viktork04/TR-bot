@@ -17,7 +17,11 @@ class Bot
 
         bot.api.send_message(chat_id: message.chat.id, text: "Adeu, #{message.from.first_name}", date: message.date)
 
-      else bot.api.send_message(chat_id: message.chat.id, text: "Comanda invàlida, #{message.from.first_name}, necessiteu utilitzar  /start,  /stop")
+      when '/nota'
+        nota_aleatoria = rand(5) + 5
+        bot.api.send_message(chat_id: message.chat.id, text: "La teva nota #{message.from.first_name} és un #{nota_aleatoria}")
+
+      else bot.api.send_message(chat_id: message.chat.id, text: "Comanda invàlida, #{message.from.first_name}, necessiteu utilitzar  /start,  /stop o /nota")
       end
     end
   end
